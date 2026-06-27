@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee-container {
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  gap: 2rem;
+}
+
+.marquee span {
+  white-space: nowrap;
+}
+
+.group:hover .marquee {
+  animation: scroll 6s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
+
+.marquee-container-two {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-two {
+  display: inline-flex;
+  width: max-content;
+  animation: none;
+}
+
+.group:hover .marquee-two {
+  animation: marquee 8s linear infinite;
+}
+
+.marquee-two span {
+  flex-shrink: 0;
+  padding-right: 3rem; /* Gap between the two copies */
+}
+
+.group:hover .marquee-two span {
+  color: white;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 1.5rem));
+  }
+}

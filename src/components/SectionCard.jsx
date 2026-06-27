@@ -12,12 +12,12 @@ const SectionCard = (props) => {
           letterSpacing: "-0.05em",
         }}
       >
-        {props.id}
+        {props.id + 1}
       </span>
-      <div className="h-13.75 w-10 shrink-0 overflow-hidden rounded bg-green-500">
+      <div className="h-13.75 w-10 shrink-0 overflow-hidden rounded">
         <img
           className="h-full w-full object-cover"
-          src={props.imageUrl}
+          src={`https://image.tmdb.org/t/p/w500${props.imageUrl}`}
           alt=""
         />
       </div>
@@ -33,9 +33,9 @@ const SectionCard = (props) => {
           <h2 className="text-base group-hover:text-white text-stone-400 font-semibold">{props.title}</h2>
         )}
         <h4 className="text-[0.5rem] text-stone-400">
-          {props.releaseDate} ● {props.platform}
+          {props.media_type} ● {props.release_date}
         </h4>
-        <h4 className="text-[0.6rem] text-orange-500">{props.interestedPeople > 1000000? `${props.interestedPeople/1000000} Mil`: props.interestedPeople > 1000 ?`${props.interestedPeople/1000} k`: props.interestedPeople }</h4>
+        <h4 className="text-[0.6rem] text-orange-500">{`Rating: ${props.rating.toFixed(1)}`}</h4>
       </div>
     </div>
   );

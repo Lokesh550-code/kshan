@@ -2,10 +2,9 @@ import Netflixrecomendation from "../components/Netflixrecomendation";
 import PrimeRecomendation from "../components/PrimeRecomendation";
 import SectionRow from "../components/SectionRow";
 import TalkSection from "../components/TalkSection";
-import TrendingBar from "../components/TrendingBar";
 
-const Home = ({ movieData, upComingMovies }) => {
-  // console.log(upComingMovies)
+const Home = ({ movieData}) => {
+
   return (
     // left
     <div className="w-full h-fit py-4 px-4 flex gap-4 mt-10">
@@ -17,8 +16,7 @@ const Home = ({ movieData, upComingMovies }) => {
 
       {/* Right */}
       <div className="w-[30%] flex flex-col items-center justify-start">
-        <TrendingBar />
-        <SectionRow upComingMovies={upComingMovies} />
+        <SectionRow />
       </div>
     </div>
   );

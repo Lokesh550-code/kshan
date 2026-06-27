@@ -8,21 +8,20 @@ const api = axios.create({
   },
 });
 
-export const getTalk = async (setMovieData) => {
+export const getTalk = async () => {
   try {
     const res = await api.get("/movie/popular");
-    setMovieData(res.data.results)
+    return res.data.results;
   } catch (err) {
-    // console.error(err.status);
-    console.error(err.message)
+    console.error(err.message);
   }
 };
 
 export const getTrending = async (period) => {
   try {
     const res = await api.get(`/trending/movie/${period}`);
-    console.log(res.data.results);
+    return res.data.results;
   } catch (err) {
-    console.log(err);
+    console.error(err.message);
   }
 };

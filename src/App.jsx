@@ -77,66 +77,20 @@ const App = () => {
     },
   ]);
 
-  const [upComingMovies, setUpComingMovies] = useState([
-    {
-      id: 1,
-      title: "Dune: Messiah",
-      releaseDate: "2026-12-18",
-      platform: "Theaters",
-      interestedPeople: 1840000,
-      imageUrl:
-        "https://plus.unsplash.com/premium_vector-1711987763169-97d809af51a3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 2,
-      title: "Stranger Things: Final Season",
-      releaseDate: "2026-11-21",
-      platform: "Netflix",
-      interestedPeople: 2760000,
-      imageUrl:
-        "https://plus.unsplash.com/premium_vector-1721918268213-de47d05257f6?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 3,
-      title: "The Batman Part II",
-      releaseDate: "2026-10-02",
-      platform: "Theaters",
-      interestedPeople: 2310000,
-      imageUrl:
-        "https://plus.unsplash.com/premium_vector-1711987731643-e8232801047b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 4,
-      title: "Knives Out: Wake Up Dead Man",
-      releaseDate: "2026-09-12",
-      platform: "Netflix",
-      interestedPeople: 980000,
-      imageUrl:
-        "https://plus.unsplash.com/premium_vector-1739198137648-0e018cb0954e?q=80&w=723&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 5,
-      title: "Spider-Man: Brand New Day",
-      releaseDate: "2026-07-31",
-      platform: "Theaters",
-      interestedPeople: 3120000,
-      imageUrl:
-        "https://plus.unsplash.com/premium_vector-1704897619683-c7fccbf5b380?q=80&w=2098&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ]);
-
   useEffect(() => {
-    getTalk(setMovieData);
-  }, []);
+    const callingFunc = async () => {
+      const arr = await getTalk();
+          arr.length = 10;
+          setMovieData(arr);
+    }
 
-  // useEffect(() => {
-  //   getTrending();
-  // }, []);
-  // console.log(movieData);
+    callingFunc();
+
+  }, []);
   return (
     <div className="relative bg-black h-fit">
       <Navbar />
-      <Home movieData={movieData} upComingMovies={upComingMovies} />
+      <Home movieData={movieData}/>
       <Footer />
     </div>
   );

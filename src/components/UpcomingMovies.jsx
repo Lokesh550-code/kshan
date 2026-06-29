@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-import SectionCard from "./SectionCard";
-import TrendingBar from "./TrendingBar";
-import { getTrending } from "../services/Api";
-const SectionRow = () => {
-const [trendingMovies, setTrendingMovies] = useState([
+import { getUpcoming } from "../services/Api";
+import MovieCard from "./Moviecard";
+import { useState, useEffect} from "react";
+
+
+const UpcomingMovies = () => {
+    const [UpcomingMovies, setUpcomingMovies] = useState([
   {
     id: 1,
     title: "Dune: Messiah",
@@ -50,37 +51,36 @@ const [trendingMovies, setTrendingMovies] = useState([
       "https://plus.unsplash.com/premium_vector-1704897619683-c7fccbf5b380?q=80&w=2098&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ]);
-const [period, setPeriod] = useState('week');
 
 useEffect(() => {
-  const getmovies = async (period) => {
-    const arr = await getTrending(`${period}`);
-    arr.length = 5;
-    setTrendingMovies(arr);
-  }
-  getmovies(period);
+    const callingFunc = async () => {
+        const arr = await getUpcoming();
+        arr.length = 10;
+        setUpcomingMovies(arr);
+    }
 
-}, [period]);
+    callingFunc();
+}, []);
   return (
-    <>
-      <div className="w-full h-full">
-        <TrendingBar setPeriod={setPeriod} />
-        {trendingMovies.map((trendingMovie, idx) => {
+    <div className="h-full w-full text-white">
+      <div className="h-7 w-full">
+        <h1>Upcoming Movies</h1>
+      </div>
+      <div className="w-full mt-[0.4rem] flex flex-wrap gap-1 ">
+        {UpcomingMovies.map((movie, idx) => {
           return (
-            <SectionCard
-              id={idx}
-              title={trendingMovie.title}
-              media_type={trendingMovie.media_type}
-              release_date={trendingMovie.release_date}
-              rating={trendingMovie.vote_average}
-              imageUrl={trendingMovie.poster_path}
+            <MovieCard
+              id={movie.id}
+              poster_path={movie.poster_path}
+              release_date={movie.release_date}
+              title={movie.title}
               key={idx}
             />
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
-export default SectionRow;
+export default UpcomingMovies;

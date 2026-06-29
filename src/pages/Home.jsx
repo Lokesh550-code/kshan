@@ -1,7 +1,9 @@
-import Netflixrecomendation from "../components/Netflixrecomendation";
-import PrimeRecomendation from "../components/PrimeRecomendation";
+import HiddenGems from "../components/HiddenGems";
 import SectionRow from "../components/SectionRow";
 import TalkSection from "../components/TalkSection";
+import TopMovies from "../components/TopMovies";
+import TopTv from "../components/TopTv";
+import UpcomingMovies from "../components/UpcomingMovies";
 
 const Home = ({ movieData}) => {
 
@@ -10,8 +12,10 @@ const Home = ({ movieData}) => {
     <div className="w-full h-fit py-4 px-4 flex gap-4 mt-10">
       <div className="w-[70%] h-full flex flex-wrap gap-4 truncate">
         <TalkSection movieData={movieData}/>
-        <Netflixrecomendation movieData={movieData}/>
-        <PrimeRecomendation movieData={movieData} />
+        <UpcomingMovies />
+        <TopMovies />
+        <TopTv />
+        <HiddenGems />
       </div>
 
       {/* Right */}

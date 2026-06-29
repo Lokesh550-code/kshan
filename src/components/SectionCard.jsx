@@ -1,6 +1,6 @@
 const SectionCard = (props) => {
   
-  const isLong = props.title.length > 19;
+  const isLong = props.title.length > 16;
 
   return (
     <div className="w-full group h-16 bg-stone-900 text-white border border-stone-800 rounded mt-2 px-2 py-1 flex items-center gap-3 cursor-pointer overflow-hidden hover:bg-stone-800 hover:border-stone-700">

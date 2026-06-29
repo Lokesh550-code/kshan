@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
-const TrendingBar = () => {
+const TrendingBar = (props) => {
   const [open, setOpen] = useState(false);
   const [timePeriod, setTimePeriod] = useState("This Week");
   const dropDownRef = useRef(null);
   const periods = ["This Week", "This Month", "This Year", "All Time"];
-  // console.log(timePeriod);
+
+  console.log(props);
 
   useEffect(() => {
     const handleClickedOutside = (event) => {
@@ -45,6 +46,12 @@ const TrendingBar = () => {
                       onClick={() => {
                         setTimePeriod(period);
                         setOpen(false);
+
+                        const year = new Date().getFullYear();
+                        const month = new Date().getMonth();
+                        
+
+                        props.setPeriod(period === "This Week"? 'week': period === "This Month"? `/discover/movie?primary_release_date.gte=${year}-${month}-01&primary_release_date.lte=${month == 1? year - 1: year}-${month == 1? 12: month-1}-30&sort_by=popularity.desc`: period === "This Year"? `/discover/movie?primary_release_year=${year}&sort_by=popularity.desc`: "/discover/movie?sort_by=popularity.desc");
                       }}
                       className="w-full flex justify-center text-[10px]/[1.2] px-1 border-b border-stone-900 hover:border-stone-700 transition-colors duration-300"
                     >

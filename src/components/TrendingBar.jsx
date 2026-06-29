@@ -7,7 +7,7 @@ const TrendingBar = (props) => {
   const dropDownRef = useRef(null);
   const periods = ["This Week", "This Month", "This Year", "All Time"];
 
-  console.log(props);
+  // console.log(props);
 
   useEffect(() => {
     const handleClickedOutside = (event) => {

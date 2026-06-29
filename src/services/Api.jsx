@@ -53,11 +53,22 @@ export const getTopTv = async () => {
   }
 };
 
-export const getUnderRated = async () => {
+export const getCritiicallyAcclaimed = async () => {
   try {
-    const res = await api.get(`/discover/movie?vote_average.gte=7.8&vote_count.gte=100&popularity.lte=30&sort_by=vote_average.desc`);
+    const res = await api.get(
+      `/discover/movie?include_adult=false&vote_average.gte=7.5&vote_count.gte=5000&primary_release_date.gte=1990-01-01&sort_by=vote_average.desc`,
+    );
     return res.data.results;
   } catch (err) {
     console.error(err.message);
   }
-}
+};
+
+export const getAnime = async () => {
+  try {
+    const res = await axios.get(`https://api.jikan.moe/v4/top/anime`);
+    return res.data.data;
+  } catch (err) {
+    console.error(err.message);
+  }
+};

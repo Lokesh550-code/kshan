@@ -64,7 +64,7 @@ useEffect(() => {
   return (
     <>
       <div className="w-full h-full">
-        <TrendingBar setPeriod={setPeriod} />
+        <TrendingBar setPeriod={setPeriod} key ={122} />
         {trendingMovies.map((trendingMovie, idx) => {
           return (
             <SectionCard

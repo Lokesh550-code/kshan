@@ -1,7 +1,7 @@
 import MovieCard from "./Moviecard";
 import { useState, useEffect } from "react";
-import { getUnderRated } from "../services/Api";
-const HiddenGems = () => {
+import { getCritiicallyAcclaimed } from "../services/Api";
+const CritiicallyAcclaimed = () => {
   const [underRatedMoives, setUnderRatedMovies] = useState([
     {
       id: 1,
@@ -52,10 +52,9 @@ const HiddenGems = () => {
 
   useEffect(() => {
     const callingFunc = async () => {
-      const arr = await getUnderRated();
+      const arr = await getCritiicallyAcclaimed();
       arr.length = 10;
       setUnderRatedMovies(arr);
-      console.log(arr);
     };
     callingFunc();
   }, []);
@@ -63,7 +62,7 @@ const HiddenGems = () => {
   return (
     <div className="h-full w-full text-white">
       <div className="h-7 w-full">
-        <h1>Hidden Gems</h1>
+        <h1>Critically Acclaimed</h1>
       </div>
       <div className="w-full mt-[0.4rem] flex flex-wrap gap-1 ">
         {underRatedMoives.map((movie, idx) => {
@@ -82,4 +81,4 @@ const HiddenGems = () => {
   );
 };
 
-export default HiddenGems;
+export default CritiicallyAcclaimed;

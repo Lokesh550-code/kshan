@@ -1,4 +1,5 @@
-import HiddenGems from "../components/HiddenGems";
+import AnimeComponent from "../components/AnimeComponent";
+import HiddenGems from "../components/CritiicallyAcclaimed";
 import SectionRow from "../components/SectionRow";
 import TalkSection from "../components/TalkSection";
 import TopMovies from "../components/TopMovies";
@@ -16,6 +17,7 @@ const Home = ({ movieData}) => {
         <TopMovies />
         <TopTv />
         <HiddenGems />
+        <AnimeComponent />
       </div>
 
       {/* Right */}

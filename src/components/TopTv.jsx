@@ -54,7 +54,6 @@ const TopTv = () => {
     const callingFunc = async () => {
         const arr = await getTopTv();
         arr.length = 10;
-        console.log(arr);
         setTopTv(arr);
     }
     callingFunc();

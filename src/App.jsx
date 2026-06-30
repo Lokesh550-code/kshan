@@ -1,14 +1,19 @@
+import { ReactLenis, useLenis } from "lenis/react";
+
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="relative bg-black h-fit">
-      <Navbar />
-      <Home />
-      <Footer />
-    </div>
+    <>
+      <ReactLenis root />
+      <div className="relative bg-black h-fit">
+        <Navbar />
+        <Home />
+        <Footer />
+      </div>
+    </>
   );
 };
 

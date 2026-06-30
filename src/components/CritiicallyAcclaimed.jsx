@@ -65,13 +65,13 @@ const CritiicallyAcclaimed = () => {
         <h1>Critically Acclaimed</h1>
       </div>
       <div className="w-full mt-[0.4rem] flex flex-wrap gap-1 ">
-        {underRatedMoives.map((movie, idx) => {
+        {underRatedMoives.map((item, idx) => {
           return (
             <MovieCard
-              id={movie.id}
-              poster_path={movie.poster_path}
-              release_date={movie.release_date}
-              title={movie.title}
+              id={item.id}
+              poster_path={item.poster_path}
+              type={item.media_type}
+              title={item.title || item.name}
               key={idx}
             />
           );

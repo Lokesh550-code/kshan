@@ -1,5 +1,5 @@
 import { getAnime } from "../services/Api";
-import AnimeCard from "./Moviecard";
+import AnimeCard from "./AnimeCard";
 import { useState, useEffect } from "react";
 const AnimeComponent = () => {
   const [anime, setAnime] = useState([

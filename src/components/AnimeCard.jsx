@@ -1,6 +1,5 @@
 const MovieCard = (props) => {
-  const isLong = (props.title ?? "").length > 16;
-  console.log(props);
+  const isLong = (props.title ?? "").length > 15;
 
   return (
     <>

@@ -2,9 +2,7 @@ import AnimeComponent from "../components/AnimeComponent";
 import HiddenGems from "../components/CritiicallyAcclaimed";
 import SectionRow from "../components/SectionRow";
 import TalkSection from "../components/TalkSection";
-import TopMovies from "../components/TopMovies";
-import TopTv from "../components/TopTv";
-import UpcomingMovies from "../components/UpcomingMovies";
+import TopRated from "../components/TopRated";
 
 const Home = ({ movieData}) => {
 
@@ -13,9 +11,7 @@ const Home = ({ movieData}) => {
     <div className="w-full h-fit py-4 px-4 flex gap-4 mt-10">
       <div className="w-[70%] h-full flex flex-wrap gap-4 truncate">
         <TalkSection movieData={movieData}/>
-        <UpcomingMovies />
-        <TopMovies />
-        <TopTv />
+        <TopRated />
         <HiddenGems />
         <AnimeComponent />
       </div>

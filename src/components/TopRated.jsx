@@ -1,9 +1,8 @@
-import { getUpcomingTv } from "../services/Api";
+import { getTop } from "../services/Api";
 import MovieCard from "./Moviecard";
 import { useState, useEffect } from "react";
-
-const TopMovies = () => {
-  const [topMovies, setTopMovies] = useState([
+const TopRated = () => {
+  const [top, setTop] = useState([
     {
       id: 1,
       title: "Dune: Messiah",
@@ -54,9 +53,9 @@ const TopMovies = () => {
   useEffect(() => {
     const callingFunc = async () => {
       try {
-        const arr = await getUpcomingTv();
+        const arr = await getTop();
         arr.length = 10;
-        setTopMovies(arr);
+        setTop(arr);
       } catch (err) {
         console.error(err.message);
       }
@@ -64,20 +63,19 @@ const TopMovies = () => {
 
     callingFunc();
   }, []);
-
   return (
     <div className="h-full w-full text-white">
       <div className="h-7 w-full">
-        <h1>Top Rated Movies</h1>
+        <h1>Top Rated</h1>
       </div>
       <div className="w-full mt-[0.4rem] flex flex-wrap gap-1 ">
-        {topMovies.map((movie, idx) => {
+        {top.map((item, idx) => {
           return (
             <MovieCard
-              id={movie.id}
-              poster_path={movie.poster_path}
-              release_date={movie.release_date}
-              title={movie.title}
+              id={item.id}
+              poster_path={item.poster_path}
+              type={item.media_type}
+              title={item.title || item.name }
               key={idx}
             />
           );
@@ -87,4 +85,4 @@ const TopMovies = () => {
   );
 };
 
-export default TopMovies;
+export default TopRated;

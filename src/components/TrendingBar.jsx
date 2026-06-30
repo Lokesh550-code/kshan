@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import {getCurrentMonthRange} from "../utils/dateUtils"
 
 const TrendingBar = (props) => {
   const [open, setOpen] = useState(false);
@@ -22,6 +23,9 @@ const TrendingBar = (props) => {
       document.removeEventListener("mousedown", handleClickedOutside);
     };
   }, []);
+
+  const monthObj = getCurrentMonthRange();
+  console.log(monthObj);
 
   return (
     <>
@@ -47,11 +51,7 @@ const TrendingBar = (props) => {
                         setTimePeriod(period);
                         setOpen(false);
 
-                        const year = new Date().getFullYear();
-                        const month = new Date().getMonth();
-                        
-
-                        props.setPeriod(period === "This Week"? 'week': period === "This Month"? `/discover/movie?primary_release_date.gte=${year}-${month}-01&primary_release_date.lte=${month == 1? year - 1: year}-${month == 1? 12: month-1}-30&sort_by=popularity.desc`: period === "This Year"? `/discover/movie?primary_release_year=${year}&sort_by=popularity.desc`: "/discover/movie?sort_by=popularity.desc");
+                        props.setPeriod(period === "This Week"? '/trending/movie/week': period === "This Month"? `/discover/movie?primary_release_date.gte=${monthObj.start}&primary_release_date.lte=${monthObj.end}&sort_by=popularity.desc`: period === "This Year"? `/discover/movie?primary_release_year=${monthObj.year}&sort_by=popularity.desc`: period == "All Time"? "/discover/movie?sort_by=popularity.desc" : "/discover/movie?sort_by=popularity.desc");
                       }}
                       className="w-full flex justify-center text-[10px]/[1.2] px-1 border-b border-stone-900 hover:border-stone-700 transition-colors duration-300"
                     >

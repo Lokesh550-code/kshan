@@ -1,4 +1,4 @@
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis } from "lenis/react";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";

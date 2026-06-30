@@ -18,8 +18,6 @@ export const getTalk = async () => {
     const talk = [...movie.data.results.map(item => ({...item, media_type: "Movie"})), ...tv.data.results.map(item => ({...item, media_type: "TV"}))];
     talk.sort((a, b) => b.popularity - a.popularity);
     return talk;
-
-    // return res.data.results;
   } catch (err) {
     console.error(err.message);
   }
@@ -27,7 +25,7 @@ export const getTalk = async () => {
 
 export const getTrending = async (period) => {
   try {
-    const res = await api.get(`/trending/movie/${period}`);
+    const res = await api.get(`${period}`);
     return res.data.results;
   } catch (err) {
     console.error(err.message);

@@ -1,5 +1,5 @@
 import { getTop } from "../services/Api";
-import MovieCard from "./Moviecard";
+import MovieCard from "./MovieCard";
 import { useState, useEffect } from "react";
 const TopRated = () => {
   const [top, setTop] = useState([

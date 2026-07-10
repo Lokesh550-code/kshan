@@ -1,4 +1,4 @@
-import MovieCard from "./Moviecard";
+import MovieCard from "./MovieCard";
 import { useState, useEffect } from "react";
 import { getCritiicallyAcclaimed } from "../services/Api";
 const CritiicallyAcclaimed = () => {

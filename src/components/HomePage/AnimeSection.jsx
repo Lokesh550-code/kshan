@@ -130,7 +130,7 @@ const AnimeSection = () => {
       <div className="h-7 w-full">
         <h1>Top Anime</h1>
       </div>
-      <div className="w-full mt-4 flex flex-wrap gap-1 ">
+      <div className="w-full mt-4 flex flex-wrap gap-2 ">
         {anime.map((movie, idx) => {
           return (
             <AnimeCard

@@ -1,7 +1,7 @@
 import { getAnime } from "../services/Api";
 import AnimeCard from "./AnimeCard";
 import { useState, useEffect } from "react";
-const AnimeComponent = () => {
+const AnimeSection = () => {
   const [anime, setAnime] = useState([
     {
       id: 1,
@@ -126,11 +126,11 @@ const AnimeComponent = () => {
   }, []);
 
   return (
-    <div className="h-full w-full text-white">
+    <div className="h-full w-full text-white text-3xl">
       <div className="h-7 w-full">
         <h1>Top Anime</h1>
       </div>
-      <div className="w-full mt-[0.4rem] flex flex-wrap gap-1 ">
+      <div className="w-full mt-4 flex flex-wrap gap-1 ">
         {anime.map((movie, idx) => {
           return (
             <AnimeCard
@@ -147,4 +147,4 @@ const AnimeComponent = () => {
   );
 };
 
-export default AnimeComponent;
+export default AnimeSection;

@@ -3,18 +3,18 @@ const SectionCard = (props) => {
   const isLong = props.title.length > 16;
 
   return (
-    <div className="w-full group h-16 bg-stone-900 text-white border border-stone-800 rounded mt-2 px-2 py-1 flex items-center gap-3 cursor-pointer overflow-hidden hover:bg-stone-800 hover:border-stone-700">
+    <div className="w-full group h-28  bg-stone-900 text-white border border-stone-800 rounded mt-2 px-2 py-1 flex items-center gap-3 cursor-pointer overflow-hidden hover:bg-stone-800 hover:border-stone-700">
       <span
         className="font-black text-transparent bg-clip-text bg-linear-to-b from-[#E2E2E2] to-[#6B6B6B] select-none leading-none"
         style={{
-          fontSize: "55px",
+          fontSize: "100px",
           WebkitTextStroke: "2px rgba(255,255,255,.1)",
           letterSpacing: "-0.05em",
         }}
       >
         {props.id + 1}
       </span>
-      <div className="h-13.75 w-10 shrink-0 overflow-hidden rounded">
+      <div className="h-26 w-20 shrink-0 overflow-hidden rounded">
         <img
           className="h-full w-full object-cover"
           src={`https://image.tmdb.org/t/p/w500${props.imageUrl}`}
@@ -25,17 +25,17 @@ const SectionCard = (props) => {
         {isLong == true? (
           <div className="marquee-container-two truncate">
             <div className="marquee-two">
-              <span className="text-stone-400 text-base font-semibold">{props.title}</span>
-              <span className="text-stone-400 text-base font-semibold">{props.title}</span>
+              <span className="text-stone-400 text-3xl font-semibold">{props.title}</span>
+              <span className="text-stone-400 text-3xl font-semibold">{props.title}</span>
             </div>
           </div>
         ) : (
-          <h2 className="text-base group-hover:text-white text-stone-400 font-semibold">{props.title}</h2>
+          <h2 className="text-3xl group-hover:text-white text-stone-400 font-semibold">{props.title}</h2>
         )}
-        <h4 className="text-[0.5rem] text-stone-400">
+        <h4 className="text-[0.85rem] text-stone-400">
           {props.media_type} ● {props.release_date}
         </h4>
-        <h4 className="text-[0.6rem] text-orange-500">{`Rating: ${props.rating.toFixed(1)}`}</h4>
+        <h4 className="text-1 text-orange-500">{`Rating: ${props.rating.toFixed(1)}`}</h4>
       </div>
     </div>
   );

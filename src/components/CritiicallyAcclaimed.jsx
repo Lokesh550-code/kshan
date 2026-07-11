@@ -60,11 +60,11 @@ const CritiicallyAcclaimed = () => {
   }, []);
 
   return (
-    <div className="h-full w-full text-white">
+    <div className="h-full w-full text-white text-3xl">
       <div className="h-7 w-full">
         <h1>Critically Acclaimed</h1>
       </div>
-      <div className="w-full mt-[0.4rem] flex flex-wrap gap-1 ">
+      <div className="w-full mt-4 flex flex-wrap gap-1 ">
         {underRatedMoives.map((item, idx) => {
           return (
             <MovieCard

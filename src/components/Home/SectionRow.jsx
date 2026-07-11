@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SectionCard from "./SectionCard";
 import TrendingBar from "./TrendingBar";
-import { getTrending } from "../services/Api";
+import { getTrending } from "../../services/Api";
 const SectionRow = () => {
 const [trendingMovies, setTrendingMovies] = useState([
   {

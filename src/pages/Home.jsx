@@ -1,8 +1,8 @@
-import AnimeSection from "../components/AnimeSection";
-import HiddenGems from "../components/CritiicallyAcclaimed";
-import SectionRow from "../components/SectionRow";
-import TalkSection from "../components/TalkSection";
-import TopRated from "../components/TopRated";
+import AnimeSection from "../components/Home/AnimeSection";
+import HiddenGems from "../components/Home/CritiicallyAcclaimed";
+import SectionRow from "../components/Home/SectionRow";
+import TalkSection from "../components/Home/TalkSection";
+import TopRated from "../components/Home/TopRated";
 
 const Home = ({ movieData}) => {
 

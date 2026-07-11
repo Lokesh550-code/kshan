@@ -1,6 +1,6 @@
 import MovieCard from "./MovieCard";
 import { useEffect, useState } from "react";
-import { getTalk } from "../services/Api";
+import { getTalk } from "../../services/Api";
 const TalkSection = () => {
 
     const [movieData, setMovieData] = useState([

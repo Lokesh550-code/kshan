@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-import { getCurrentMonthRange } from "../utils/dateUtils";
+import { getCurrentMonthRange } from "../../utils/dateUtils";
 
 const TrendingBar = (props) => {
   const [open, setOpen] = useState(false);

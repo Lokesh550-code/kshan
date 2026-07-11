@@ -1,4 +1,4 @@
-import { getAnime } from "../services/Api";
+import { getAnime } from "../../services/Api";
 import AnimeCard from "./AnimeCard";
 import { useState, useEffect } from "react";
 const AnimeSection = () => {

@@ -1,6 +1,6 @@
 import MovieCard from "./MovieCard";
 import { useState, useEffect } from "react";
-import { getCritiicallyAcclaimed } from "../services/Api";
+import { getCritiicallyAcclaimed } from "../../services/Api";
 const CritiicallyAcclaimed = () => {
   const [underRatedMoives, setUnderRatedMovies] = useState([
     {

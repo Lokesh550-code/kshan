@@ -1,10 +1,10 @@
-import AnimeSection from "../components/Home/AnimeSection";
-import HiddenGems from "../components/Home/CritiicallyAcclaimed";
-import SectionRow from "../components/Home/SectionRow";
-import TalkSection from "../components/Home/TalkSection";
-import TopRated from "../components/Home/TopRated";
+import AnimeSection from "../components/HomePage/AnimeSection";
+import HiddenGems from "../components/HomePage/CritiicallyAcclaimed";
+import SectionRow from "../components/HomePage/SectionRow";
+import TalkSection from "../components/HomePage/TalkSection";
+import TopRated from "../components/HomePage/TopRated";
 
-const Home = ({ movieData}) => {
+const HomePage = ({ movieData}) => {
 
   return (
     // left
@@ -24,4 +24,4 @@ const Home = ({ movieData}) => {
   );
 };
 
-export default Home;
+export default HomePage;

@@ -1,7 +1,7 @@
 import { ReactLenis } from "lenis/react";
 
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
       <ReactLenis root />
       <div className="relative bg-black h-fit">
         <Navbar />
-        <Home />
+        <HomePage />
         <Footer />
       </div>
     </>

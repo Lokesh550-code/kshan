@@ -25,7 +25,7 @@ const TrendingBar = (props) => {
   }, []);
 
   const monthObj = getCurrentMonthRange();
-  console.log(monthObj);
+  // console.log(monthObj);
 
   return (
     <>

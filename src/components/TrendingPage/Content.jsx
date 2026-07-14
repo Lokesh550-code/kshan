@@ -7,7 +7,7 @@ const Content = ({ trending }) => {
       <div className="h-fit w-[80%] text-white">
         <div className="pb-4 border-b border-stone-600 ">
           <h1 className="text-[2.2rem] font-bold uppercase mt-2">
-            Most Interested
+            Trending
           </h1>
         </div>
         <div className="h-full w-full mb-5">

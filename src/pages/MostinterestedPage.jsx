@@ -1,5 +1,5 @@
-import SideBar from "../components/MostInterestedPage/SideBar";
-import Content from "../components/MostInterestedPage/Content"
+import SideBar from "../components/TrendingPage/SideBar";
+import Content from "../components/TrendingPage/Content"
 import { useState } from "react";
 import { useEffect } from "react";
 import { getTrendingMedia } from "../services/Api";

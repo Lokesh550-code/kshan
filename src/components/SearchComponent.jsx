@@ -1,13 +1,16 @@
 import { useLenis } from "lenis/react";
 import { Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+// import { getSearchTMDB } from "../services/Api";
 
 const SearchComponent = ({ isClicked }) => {
   const lenis = useLenis();
   const inputRef = useRef(null);
 
-  const selection = [`All`, `Movies`, `TV Shows`, `Anime`, `People`];
-  const [activeTab, setActiveTab] = useState(`All`);
+  const selection = [`Movies`, `TV Shows`, `Anime`, `People`];
+  const [activeTab, setActiveTab] = useState(`Movies`);
+
+  const [search, setSearch] = useState(``);
 
   useEffect(() => {
     if (isClicked) {
@@ -36,8 +39,18 @@ const SearchComponent = ({ isClicked }) => {
         className="h-12 w-full flex items-center justify-between gap-4 cursor-text text-white bg-stone-800 rounded-md overflow-hidden px-4"
       >
         <Search size={20} />
-        <form className="h-full w-full">
+        <form
+          className="h-full w-full"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSearch("");
+          }}
+        >
           <input
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+            value={search}
             ref={inputRef}
             className="h-12 w-full bg-stone-800 outline-none focus:outline-none"
             type="text"

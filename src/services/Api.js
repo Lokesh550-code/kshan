@@ -112,3 +112,23 @@ export const getTrendingMedia = async (period, periodTv) => {
     console.error(err.message);
   }
 };
+
+export const getSearchTMDB = async (URL) => {
+  try {
+    const data = await api.get(URL);
+    return data.data.results;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
+export const getSearchJikan = async (name) => {
+  try {
+    const data = await axios.get(`GET https://api.jikan.moe/v4/anime?q=${name}`);
+    return data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}

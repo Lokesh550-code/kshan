@@ -1,7 +1,7 @@
 import { ReactLenis } from "lenis/react";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import {MostInterestedPage} from "./pages/MostInterestedPage";
+// import {MostInterestedPage} from "./pages/MostInterestedPage";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
       <div className="relative bg-black h-fit">
         <Navbar />
         <HomePage />
-        <MostInterestedPage />
+        {/* <MostInterestedPage /> */}
         <Footer />
       </div>
     </>

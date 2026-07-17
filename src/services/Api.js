@@ -113,9 +113,13 @@ export const getTrendingMedia = async (period, periodTv) => {
   }
 };
 
-export const getSearchTMDB = async (URL) => {
+export const getSearchTMDB = async (searchType, query) => {
   try {
-    const data = await api.get(URL);
+    const data = await api.get(`https://api.themoviedb.org/3/search/${searchType}`, {
+      params: {
+        query,
+      },
+    });
     return data.data.results;
   } catch (err) {
     console.error(err);
@@ -125,8 +129,8 @@ export const getSearchTMDB = async (URL) => {
 
 export const getSearchJikan = async (name) => {
   try {
-    const data = await axios.get(`GET https://api.jikan.moe/v4/anime?q=${name}`);
-    return data;
+    const data = await axios.get(`https://api.jikan.moe/v4/anime?q=${name}`);
+    return data.data;
   } catch (err) {
     console.error(err);
     throw err;

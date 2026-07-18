@@ -1,8 +1,18 @@
-@import 'lenis/dist/lenis.css';
+@import "lenis/dist/lenis.css";
 @import "tailwindcss";
 
-body::-webkit-scrollbar {
-  display: none;
+body {
+  background-color: #000;
+}
+
+/* Width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background: #444;
 }
 
 .marquee-container {

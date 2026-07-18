@@ -1,6 +1,6 @@
 import { Search, Bell, EllipsisVertical } from "lucide-react";
 import { useState } from "react";
-import SearchComponent from "./SearchComponent";
+import SearchComponent from "./SearchPage/SearchComponent";
 const Navbar = () => {
   const [isClicked, setIsClicked] = useState(false);
 

@@ -1,5 +1,8 @@
+import Placeholder from "../../assets/placeholder.png";
+
 const SectionCard = (props) => {
   
+  const imageUrl = `https://image.tmdb.org/t/p/w500${props.imageUrl}`;
   const isLong = props.title.length > 16;
 
   return (
@@ -17,7 +20,7 @@ const SectionCard = (props) => {
       <div className="h-26 w-20 shrink-0 overflow-hidden rounded">
         <img
           className="h-full w-full object-cover"
-          src={`https://image.tmdb.org/t/p/w500${props.imageUrl}`}
+          src={imageUrl || Placeholder}
           alt=""
         />
       </div>

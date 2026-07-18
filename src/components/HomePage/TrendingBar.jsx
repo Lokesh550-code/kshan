@@ -44,9 +44,10 @@ const TrendingBar = (props) => {
               className={` w-36 h-8 text-xl rounded bg-stone-900 border border-stone-800 transition-all duration-300 ${open ? "opacity-100 scale-100 pointer-events-auto z-1" : "opacity-0 scale-95 pointer-events-none -z-10"}`}
             >
               <ul className="flex flex-col gap-0.5 items-center justify-center">
-                {periods.map((period) => {
+                {periods.map((period, id) => {
                   return (
                     <li
+                    key = {id}
                       onClick={() => {
                         setTimePeriod(period);
                         setOpen(false);

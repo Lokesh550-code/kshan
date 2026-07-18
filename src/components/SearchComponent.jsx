@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { getSearchTMDB } from "../services/Api";
 import { getSearchJikan } from "../services/Api";
+import SearchCard from "./SearchCard";
 
 const SearchComponent = ({ isClicked }) => {
   const lenis = useLenis();
@@ -12,25 +13,22 @@ const SearchComponent = ({ isClicked }) => {
   const [activeTab, setActiveTab] = useState(`All`); //Used to get Update just the tab.
   const [search, setSearch] = useState(``); // Used to show data for Form.
   const [searchType, setSearchType] = useState("multi"); // Used to store the querry. (multi, movie, tv, people)
-  const [query, setQuery] = useState(""); // Used to store search query
-  const [results, setResults] = useState([]);
-
-  console.log(searchType);
-  console.log(query);
-  console.log(results);
+  const [query, setQuery] = useState(``); // Used to store search query
+  const [results, setResults] = useState([]); // Used to store the recieved data
 
   useEffect(() => {
     const callingFunc = async () => {
       if (activeTab === "Anime") {
         const arr = await getSearchJikan(query);
-        setResults(arr);
+        setResults(arr.data.data);
+        setQuery(``);
       } else {
         const arr = await getSearchTMDB(searchType, query);
         setResults(arr);
       }
     };
     callingFunc();
-  }, [query, searchType, activeTab]);
+  }, [query, activeTab, searchType]);
 
   useEffect(() => {
     if (isClicked) {
@@ -106,6 +104,25 @@ const SearchComponent = ({ isClicked }) => {
               </button>
             );
           })}
+        </div>
+        <div className="max-h-[85%] w-full py-2 flex flex-wrap gap-2 justify-center overflow-y-auto">
+          {/* {results.map((result, key) => {
+            return (
+              <SearchCard
+                key={key}
+                id={result.id || result.mal_id}
+                title={result.title || result.name}
+                mediaType={result.media_type || "Anime"}
+                image={
+                  result.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+                    : result.profile_path
+                      ? `https://image.tmdb.org/t/p/w500${result.profile_path}`
+                      : result.images?.jpg?.image_url
+                }
+              />
+            );
+          })} */}
         </div>
       </div>
     </div>

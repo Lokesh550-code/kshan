@@ -2,9 +2,9 @@ import SideBar from "../components/TrendingPage/SideBar";
 import Content from "../components/TrendingPage/Content"
 import { useState } from "react";
 import { useEffect } from "react";
-import { getTrendingMedia } from "../services/Api";
+import { getTrendingMedia } from "../services/media";
 
-export const MostInterestedPage = () => {
+export const TrendingPage = () => {
     const [timePeriod, setTimePeriod] = useState('/trending/movie/week');
     const [timePeriodTv, setTimePeriodTv] = useState('/trending/tv/week');
     const [trending, setTrending] = useState([]);
@@ -26,4 +26,4 @@ export const MostInterestedPage = () => {
   );
 };
 
-export default MostInterestedPage;
+export default TrendingPage;

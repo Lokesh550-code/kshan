@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 // import {MostInterestedPage} from "./pages/MostInterestedPage";
 import Footer from "./components/Footer";
+import TrendingPage from "./pages/TrendingPage";
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <div className="relative bg-black h-fit">
         <Navbar />
         <HomePage />
-        {/* <MostInterestedPage /> */}
+        <TrendingPage />
         <Footer />
       </div>
     </>

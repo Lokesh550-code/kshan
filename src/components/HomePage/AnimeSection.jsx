@@ -1,4 +1,4 @@
-import { getAnime } from "../../services/Api";
+import { getAnime } from "../../services/anime";
 import AnimeCard from "./AnimeCard";
 import { useState, useEffect } from "react";
 const AnimeSection = () => {
@@ -118,8 +118,7 @@ const AnimeSection = () => {
   useEffect(() => {
     const callingFunc = async () => {
       const arr = await getAnime();
-      arr.length = 10;
-      setAnime(arr);
+      setAnime(arr.slice(0, 10));
     };
 
     callingFunc();

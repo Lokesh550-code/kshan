@@ -7,7 +7,7 @@ const SideBar = (props) => {
   const [timeFrame, setTimeFrame] = useState(`This Week`);
   const monthObj = getCurrentMonthRange;
   return (
-    <div className="h-full w-[15%] relative text-white">
+    <div className="h-full w-[15%] py-9  relative text-white">
       <div className="h-fit w-full sticky top-22 flex flex-col gap-4">
         <h1 className="uppercase text-2xl font-bold text-stone-400">
           Timeframe

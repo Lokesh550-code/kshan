@@ -23,7 +23,7 @@ const Card = (props) => {
           <div className="h-fit w-fit">
             <h1 className="text-2xl">{props.title || props.name}</h1>
             <p className="text-sm text-stone-400">
-              {props.release_date || props.first_air_date } <span className="text-stone-500">●</span>{props.media_type}
+              {props.release_date || props.first_air_date } <span className="text-stone-500">●</span> {props.media_type}
             </p>
           </div>
         </div>

@@ -2,16 +2,19 @@ import { useState, useEffect } from "react";
 import SectionCard from "./SectionCard";
 import TrendingBar from "./TrendingBar";
 import { getTrending } from "../../services/media";
+import RowSkeletonCard from '../SkeletonLoadingState/RowSkeletonCard';
 
 const SectionRow = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [period, setPeriod] = useState("/trending/movie/week");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getmovies = async (period) => {
+      setIsLoading(true);
       const arr = await getTrending(`${period}`);
-      arr.length = 5;
-      setTrendingMovies(arr);
+      setTrendingMovies(arr.slice(0, 6));
+      setIsLoading(false);
     };
     getmovies(period);
   }, [period]);
@@ -21,7 +24,10 @@ const SectionRow = () => {
     <>
       <div className="w-full h-full">
         <TrendingBar setPeriod={setPeriod} />
-        {trendingMovies.map((trendingMovie, idx) => {
+        {isLoading && Array(6).fill(0).map((item, id) => {
+          return (<RowSkeletonCard key={id} id={id}/>)
+        })}
+        {!isLoading && trendingMovies.map((trendingMovie, idx) => {
           return (
             <SectionCard
               id={idx}

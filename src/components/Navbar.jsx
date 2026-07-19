@@ -1,4 +1,4 @@
-import { Search, Bell, EllipsisVertical } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useState } from "react";
 import SearchComponent from "./SearchPage/SearchComponent";
 const Navbar = () => {
@@ -21,14 +21,14 @@ const Navbar = () => {
             }}
             className="text-white cursor-pointer"
           >
-            <Search size={20} />
+            {!isClicked? <Search size={20} /> : <X size={23}/>}
           </button>
-          <button className="text-white cursor-pointer">
+          {/* <button className="text-white cursor-pointer">
             <Bell size={20} />
           </button>
           <button className="text-white cursor-pointer">
             <EllipsisVertical size={20} />
-          </button>
+          </button> */}
         </div>
       </div>
 

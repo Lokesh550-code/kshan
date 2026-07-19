@@ -1,14 +1,18 @@
 import MovieCard from "./MovieCard";
 import { useState, useEffect } from "react";
 import { getCritiicallyAcclaimed } from "../../services/media";
+import SkeletonCards from "../SkeletonLoadingState/SkeletonCards";
+
 const CritiicallyAcclaimed = () => {
   const [underRatedMoives, setUnderRatedMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const callingFunc = async () => {
+      setIsLoading(true);
       const arr = await getCritiicallyAcclaimed();
-      arr.length = 10;
-      setUnderRatedMovies(arr);
+      setUnderRatedMovies(arr.slice(0, 10));
+      setIsLoading(false);
     };
     callingFunc();
   }, []);
@@ -19,17 +23,24 @@ const CritiicallyAcclaimed = () => {
         <h1>Critically Acclaimed</h1>
       </div>
       <div className="w-full mt-4 flex flex-wrap gap-2">
-        {underRatedMoives.map((item, idx) => {
-          return (
-            <MovieCard
-              id={item.id}
-              poster_path={item.poster_path}
-              type={item.media_type}
-              title={item.title || item.name}
-              key={idx}
-            />
-          );
-        })}
+        {isLoading &&
+          Array(10)
+            .fill(0)
+            .map((elem, id) => {
+              return <SkeletonCards key={id} />;
+            })}
+        {!isLoading &&
+          underRatedMoives.map((item, idx) => {
+            return (
+              <MovieCard
+                id={item.id}
+                poster_path={item.poster_path}
+                type={item.media_type}
+                title={item.title || item.name}
+                key={idx}
+              />
+            );
+          })}
       </div>
     </div>
   );

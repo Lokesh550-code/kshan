@@ -1,6 +1,6 @@
 import {Search} from 'lucide-react'
 
-const SearchBar = ({search, inputRef, setQuery, setSearch}) => {
+const SearchBar = ({search, inputRef, setQuery, setSearch, setHasSearched}) => {
   return (
     <div className='flex items-center justify-between gap-4 h-full w-full'>
       {" "}
@@ -11,6 +11,7 @@ const SearchBar = ({search, inputRef, setQuery, setSearch}) => {
           e.preventDefault();
           setQuery(search);
           setSearch("");
+          setHasSearched(true);
         }}
       >
         <input

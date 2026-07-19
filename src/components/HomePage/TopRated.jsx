@@ -1,17 +1,17 @@
 import { getTop } from "../../services/media";
+import SkeletonCards from "../SkeletonLoadingState/SkeletonCards";
 import MovieCard from "./MovieCard";
 import { useState, useEffect } from "react";
 const TopRated = () => {
   const [top, setTop] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const callingFunc = async () => {
-      try {
-        const arr = await getTop();
-        setTop(arr.slice(0, 10));
-      } catch (err) {
-        console.error(err.message);
-      }
+      setIsLoading(true);
+      const arr = await getTop();
+      setTop(arr.slice(0, 10));
+      setIsLoading(false);
     };
 
     callingFunc();
@@ -22,17 +22,24 @@ const TopRated = () => {
         <h1>Top Rated</h1>
       </div>
       <div className="w-full mt-4 flex flex-wrap gap-2">
-        {top.map((item, idx) => {
-          return (
-            <MovieCard
-              id={item.id}
-              poster_path={item.poster_path}
-              type={item.media_type}
-              title={item.title || item.name }
-              key={idx}
-            />
-          );
-        })}
+        {isLoading &&
+          Array(10)
+            .fill(0)
+            .map((elem, id) => {
+              return <SkeletonCards key={id} />;
+            })}
+        {!isLoading &&
+          top.map((item, idx) => {
+            return (
+              <MovieCard
+                id={item.id}
+                poster_path={item.poster_path}
+                type={item.media_type}
+                title={item.title || item.name}
+                key={idx}
+              />
+            );
+          })}
       </div>
     </div>
   );

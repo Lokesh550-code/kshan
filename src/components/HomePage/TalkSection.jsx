@@ -1,16 +1,20 @@
 import MovieCard from "./MovieCard";
 import { useEffect, useState } from "react";
 import { getTalk } from "../../services/media";
+import SkeletonCards from "../SkeletonLoadingState/SkeletonCards";
 const TalkSection = () => {
 
     const [movieData, setMovieData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const callingFunc = async () => {
+      setIsLoading(true);
       const arr = await getTalk();
           arr.length = 10;
           const finalArr = arr.map(item => ({...item, media_type: 'Movie'}))
           setMovieData(finalArr);
+          setIsLoading(false);
     }
 
     callingFunc();
@@ -23,7 +27,12 @@ const TalkSection = () => {
         <h1>Talk of the Town</h1>
       </div>
       <div className="w-full mt-4 flex flex-wrap gap-2">
-        {movieData.map((item, idx) => {
+        {isLoading && Array(8).fill(0).map((elem, id) => {
+          return(
+            <SkeletonCards key={id} />
+          )
+        })}
+        {!isLoading && movieData.map((item, idx) => {
           return (
             <MovieCard
               id={item.id}

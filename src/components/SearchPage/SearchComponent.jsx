@@ -4,17 +4,26 @@ import { getSearchTMDB } from "../../services/search";
 import Tab from "./Tab";
 import SearchCard from "./SearchCard";
 import SearchBar from "./SearchBar";
+import SearchSkeletonCard from "../SkeletonLoadingState/SearchSkeletonCard";
+import EmptyState from "./EmptyState";
+import NoResultState from "./NoResultState";
+import ErrorState from "./ErrorState";
 
 const SearchComponent = ({ isClicked }) => {
   const lenis = useLenis();
   const inputRef = useRef(null);
 
   const selection = [`All`, `Movies`, `TV Shows`, `People`];
+
   const [activeTab, setActiveTab] = useState(`All`); //Used to get Update just the tab.
   const [search, setSearch] = useState(``); // Used to show data for Form.
   const [searchType, setSearchType] = useState("multi"); // Used to store the querry. (multi, movie, tv, people)
   const [query, setQuery] = useState(``); // Used to store search query
   const [results, setResults] = useState([]); // Used to store the recieved data
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [error, setError] = useState(null);
 
   const getMediaType = (result) => {
     if (result.media_type) {
@@ -34,9 +43,19 @@ const SearchComponent = ({ isClicked }) => {
   };
 
   useEffect(() => {
+    if (!query.trim()) return;
     const callingFunc = async () => {
-      const arr = await getSearchTMDB(searchType, query);
-      setResults(arr);
+      setIsLoading(true);
+      setError(null);
+      try {
+        const arr = await getSearchTMDB(searchType, query);
+        setResults(arr);
+      } catch (err) {
+        console.error(err.message);
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
     };
     callingFunc();
   }, [query, searchType]);
@@ -44,6 +63,11 @@ const SearchComponent = ({ isClicked }) => {
   useEffect(() => {
     if (isClicked) {
       lenis?.stop();
+      setHasSearched(false);
+      setResults([]);
+      setQuery("");
+      setSearch("");
+
       //   document.documentElement.style.overflow = "hidden"; used for standard application
       requestAnimationFrame(() => {
         inputRef.current?.focus();
@@ -59,7 +83,6 @@ const SearchComponent = ({ isClicked }) => {
       //   document.documentElement.style.overflow = "auto";
     };
   }, [isClicked, lenis]);
-
   return (
     <div
       className={`w-full h-[60vh] border-b-2 bg-black border-stone-500 fixed flex flex-col gap-2.5 px-10 py-4 overflow-y-hidden ${isClicked ? "opacity-100 z-999999" : "opacity-0 -z-3"}`}
@@ -68,7 +91,12 @@ const SearchComponent = ({ isClicked }) => {
         onClick={() => inputRef.current?.focus()}
         className="min-h-12 w-full cursor-text text-white bg-stone-800 rounded-md overflow-hidden px-4"
       >
-        <SearchBar search={search} setSearch={setSearch} setQuery={setQuery} />
+        <SearchBar
+          search={search}
+          setSearch={setSearch}
+          setQuery={setQuery}
+          setHasSearched={setHasSearched}
+        />
       </div>
 
       <div className="w-full h-[90%] text-white">
@@ -84,8 +112,18 @@ const SearchComponent = ({ isClicked }) => {
           className="max-h-[85%] w-full py-2 flex flex-wrap gap-2 flex-1 overflow-y-scroll"
           data-lenis-prevent
         >
-          {results.map((result, key) => {
-            return (
+          {!hasSearched ? (
+            <EmptyState />
+          ) : isLoading ? (
+            Array.from({ length: 8 }).map((_, id) => (
+              <SearchSkeletonCard key={id} />
+            ))
+          ) : error ? (
+            <ErrorState />
+          ) : results.length === 0 ? (
+            <NoResultState />
+          ) : (
+            results.map((result, key) => (
               <SearchCard
                 key={key}
                 id={result.id || result.mal_id}
@@ -99,8 +137,8 @@ const SearchComponent = ({ isClicked }) => {
                       : result.images?.jpg?.image_url
                 }
               />
-            );
-          })}
+            ))
+          )}
         </div>
       </div>
     </div>

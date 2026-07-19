@@ -23,7 +23,7 @@ export const TrendingPage = () => {
   return (
     <>
       <div className=" h-fit w-full mt-18 relative flex justify-between px-10">
-        <SideBar setTimePeriod = {setTimePeriod} setTimePeriodTv = {setTimePeriodTv} />
+        <SideBar setTimePeriod = {setTimePeriod} setTimePeriodTv = {setTimePeriodTv} setPage={setPage} />
         <Content trending={trending} isLoading={isLoading} page={page} setPage={setPage}/>
       </div>
     </>

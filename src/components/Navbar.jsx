@@ -33,7 +33,7 @@ const Navbar = () => {
       </div>
 
       {/* <div className="w-full h-screen bg-black  z-999 opacity-85"> */}
-      <SearchComponent isClicked={isClicked} />
+      <SearchComponent isClicked={isClicked} setIsClicked={setIsClicked}/>
 
       {/* </div> */}
     </>

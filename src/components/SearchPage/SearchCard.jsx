@@ -10,6 +10,7 @@ const SearchCard = (props) => {
     >
       <div className="h-full w-[25%] overflow-hidden rounded-sm">
         <img
+          loading="lazy"
           className="h-full w-full object-cover"
           src={props.image || Placeholder}
           alt={props.title}
@@ -34,9 +35,7 @@ const SearchCard = (props) => {
           </h3>
         )}
 
-        <p className="text-stone-500 text-sm capitalize">
-          {props.mediaType}
-        </p>
+        <p className="text-stone-500 text-sm capitalize">{props.mediaType}</p>
       </div>
     </div>
   );

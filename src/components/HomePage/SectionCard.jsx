@@ -1,7 +1,6 @@
 import Placeholder from "../../assets/placeholder.png";
 
 const SectionCard = (props) => {
-  
   const imageUrl = `https://image.tmdb.org/t/p/w500${props.imageUrl}`;
   const isLong = props.title.length > 16;
 
@@ -19,21 +18,28 @@ const SectionCard = (props) => {
       </span>
       <div className="h-26 w-20 shrink-0 overflow-hidden rounded">
         <img
+          loading="lazy"
           className="h-full w-full object-cover"
           src={imageUrl || Placeholder}
           alt=""
         />
       </div>
       <div className="flex-1 min-w-0">
-        {isLong == true? (
+        {isLong == true ? (
           <div className="marquee-container-two truncate">
             <div className="marquee-two">
-              <span className="text-stone-400 text-3xl font-semibold">{props.title}</span>
-              <span className="text-stone-400 text-3xl font-semibold">{props.title}</span>
+              <span className="text-stone-400 text-3xl font-semibold">
+                {props.title}
+              </span>
+              <span className="text-stone-400 text-3xl font-semibold">
+                {props.title}
+              </span>
             </div>
           </div>
         ) : (
-          <h2 className="text-3xl group-hover:text-white text-stone-400 font-semibold">{props.title}</h2>
+          <h2 className="text-3xl group-hover:text-white text-stone-400 font-semibold">
+            {props.title}
+          </h2>
         )}
         <h4 className="text-[0.85rem] text-stone-400">
           {props.media_type} ● {props.release_date}

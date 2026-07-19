@@ -9,7 +9,7 @@ import EmptyState from "./EmptyState";
 import NoResultState from "./NoResultState";
 import ErrorState from "./ErrorState";
 
-const SearchComponent = ({ isClicked }) => {
+const SearchComponent = ({ isClicked, setIsClicked }) => {
   const lenis = useLenis();
   const inputRef = useRef(null);
 
@@ -24,6 +24,21 @@ const SearchComponent = ({ isClicked }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);
+
+  const showRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickedOutside = (event) => {
+      if (showRef.current && !showRef.current.contains(event.target)) {
+        setIsClicked(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickedOutside);
+    };
+  }, [setIsClicked]);
 
   const getMediaType = (result) => {
     if (result.media_type) {
@@ -85,6 +100,7 @@ const SearchComponent = ({ isClicked }) => {
   }, [isClicked, lenis]);
   return (
     <div
+      ref={showRef}
       className={`w-full h-[60vh] border-b-2 bg-black border-stone-500 fixed flex flex-col gap-2.5 px-10 py-4 overflow-y-hidden ${isClicked ? "opacity-100 z-999999" : "opacity-0 -z-3"}`}
     >
       <div

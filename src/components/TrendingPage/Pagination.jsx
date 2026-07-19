@@ -17,7 +17,7 @@ const Pagination = (props) => {
           handlePrev();
         }}
         disabled={props.page === 1}
-        className={`text-2xl w-40 px-2 py-1 rounded transition ${props.page === 1 ?  "bg-stone-800 hover:bg-stone-700 cursor-not-allowed" :"bg-orange-600 hover:bg-orange-700 cursor-pointer"}`}
+        className={`text-xl w-28 px-1 rounded transition ${props.page === 1 ?  "bg-stone-800 hover:bg-stone-700 cursor-not-allowed" :"bg-orange-600 hover:bg-orange-700 cursor-pointer"}`}
       >
         Previous
       </button>
@@ -29,7 +29,7 @@ const Pagination = (props) => {
           handleNext();
         }}
         disabled={props.page === 10}
-        className={`text-2xl w-40 px-2 py-1 rounded transition ${props.page === 10 ?  "bg-stone-800 hover:bg-stone-700 cursor-not-allowed" :"bg-orange-600 hover:bg-orange-700 cursor-pointer"}`}
+        className={`text-xl w-28 px-1 rounded transition ${props.page === 10 ?  "bg-stone-800 hover:bg-stone-700 cursor-not-allowed" :"bg-orange-600 hover:bg-orange-700 cursor-pointer"}`}
       >
         Next
       </button>

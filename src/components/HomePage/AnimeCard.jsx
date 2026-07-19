@@ -1,4 +1,4 @@
-import placeholder from '../../assets/placeholder.png'
+import placeholder from "../../assets/placeholder.png";
 const MovieCard = (props) => {
   const isLong = (props.title ?? "").length > 14;
 
@@ -10,8 +10,9 @@ const MovieCard = (props) => {
       >
         <div className="w-full h-[80%] rounded-sm overflow-hidden">
           <img
+            loading="lazy"
             className="h-full w-full object-cover"
-            src={props.image || placeholder} 
+            src={props.image || placeholder}
             alt=""
           />
         </div>

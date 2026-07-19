@@ -18,6 +18,7 @@ const SideBar = (props) => {
               <div
                 onClick={() => {
                   setTimeFrame(period);
+                  props.setPage(1);
                   props.setTimePeriod(
                     period === "This Week"
                       ? "/trending/movie/week"

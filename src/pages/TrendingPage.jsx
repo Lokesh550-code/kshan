@@ -9,21 +9,22 @@ export const TrendingPage = () => {
     const [timePeriodTv, setTimePeriodTv] = useState('/trending/tv/week');
     const [trending, setTrending] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         const getMedia = async () => {
             setIsLoading(true);
-            const data = await getTrendingMedia(timePeriod, timePeriodTv);
+            const data = await getTrendingMedia(timePeriod, timePeriodTv, page);
             setTrending(data);
             setIsLoading(false);
         } 
         getMedia();
-    }, [timePeriod, timePeriodTv]);
+    }, [timePeriod, timePeriodTv, page]);
   return (
     <>
       <div className=" h-fit w-full mt-18 relative flex justify-between px-10">
         <SideBar setTimePeriod = {setTimePeriod} setTimePeriodTv = {setTimePeriodTv} />
-        <Content trending={trending} isLoading={isLoading}/>
+        <Content trending={trending} isLoading={isLoading} page={page} setPage={setPage}/>
       </div>
     </>
   );

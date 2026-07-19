@@ -63,10 +63,10 @@ const SearchComponent = ({ isClicked }) => {
   useEffect(() => {
     if (isClicked) {
       lenis?.stop();
-      setHasSearched(false);
-      setResults([]);
-      setQuery("");
-      setSearch("");
+      () => setHasSearched(false);
+      () => setResults([]);
+      () => setQuery("");
+      () => setSearch("");
 
       //   document.documentElement.style.overflow = "hidden"; used for standard application
       requestAnimationFrame(() => {

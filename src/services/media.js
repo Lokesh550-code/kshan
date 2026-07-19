@@ -35,7 +35,7 @@ export const getCritiicallyAcclaimed = async () => {
   return mergeMedia(movie, tv)
 };
 
-export const getTrendingMedia = async (period, periodTv) => {
-    const [movie, tv] = await Promise.all([request( tmdb ,period), request(tmdb ,periodTv)]);
+export const getTrendingMedia = async (period, periodTv, page) => {
+    const [movie, tv] = await Promise.all([request( tmdb ,period, { params: {page: page} } ), request(tmdb ,periodTv, { params: {page: page} } )]);
   return mergeMedia(movie, tv).slice(0, 20);
 };

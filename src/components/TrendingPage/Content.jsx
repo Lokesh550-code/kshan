@@ -1,7 +1,8 @@
 import Card from "./Card";
+import Pagination from "./Pagination";
 import TrendingSkeletonCard from "../SkeletonLoadingState/TrendingSkeletonCard";
 
-const Content = ({ trending, isLoading }) => {
+const Content = ({ trending, isLoading, page, setPage }) => {
   let id = -1;
   return (
     <>
@@ -34,6 +35,9 @@ const Content = ({ trending, isLoading }) => {
                 />
               );
             })}
+        </div>
+        <div className="h-40 w-full">
+          <Pagination page={page} setPage={setPage} />
         </div>
       </div>
     </>

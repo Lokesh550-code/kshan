@@ -39,3 +39,8 @@ export const getTrendingMedia = async (period, periodTv, page) => {
     const [movie, tv] = await Promise.all([request( tmdb ,period, { params: {page: page} } ), request(tmdb ,periodTv, { params: {page: page} } )]);
   return mergeMedia(movie, tv).slice(0, 20);
 };
+
+export const mediaDetail = async (mediaType,id) => {
+  const data = await request(tmdb, `/${mediaType}/${id}?append_to_response=credits,videos,images,recommendations,similar,watch/providers,reviews`);
+  return data;
+}

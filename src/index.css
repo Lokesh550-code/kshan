@@ -15,6 +15,18 @@ body {
   background: #444;
 }
 
+.cast-list::-webkit-scrollbar {
+    height: 3px;
+}
+
+.cast-list::-webkit-scrollbar-thumb {
+    background: #78716c;
+}
+
+.cast-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 .marquee-container {
   overflow: hidden;
 }

@@ -42,13 +42,13 @@ const HeroPage = ({ result }) => {
             </h1>
           </div>
           <div>
-            <span className=" text-xl">
-              {result.vote_average} • {minutesFunction(result.runtime)} •{" "}
+            <span className="text-xl">
+              {result.status} • {minutesFunction(result.runtime)} •{" "}
               {releaseDate(result.release_date)}
             </span>
           </div>
           <div className="w-[40%] h-25 overflow-hidden text-white text-[18px] leading-5">
-            <p>{result.overview}</p>
+            <p className="text-stone-300">{result.overview}</p>
           </div>
         </div>
       </div>

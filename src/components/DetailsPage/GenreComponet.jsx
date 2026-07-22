@@ -1,4 +1,11 @@
-const GenreComponet = ({ genre, origin_country }) => {
+import SkeletonGenreComponent from "../SkeletonLoadingState/SkeletonGenreComponent";
+
+const GenreComponet = ({ genre, origin_country, isLoading}) => {
+
+  if(isLoading) {
+    return <SkeletonGenreComponent />
+  }
+
   return (
     <div className="h-40 w-full mt-10 px-10 py-4 flex flex-col gap-6 border-t-2 border-stone-600">
       <div className="flex flex-col gap-3">

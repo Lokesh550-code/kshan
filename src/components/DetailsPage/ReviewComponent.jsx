@@ -1,12 +1,20 @@
 import ReviewCard from "./ReviewCard";
 import { useState } from "react";
+import SkeletonReviewComponent from "../SkeletonLoadingState/SkeletonReviewComponent";
 
-const ReviewComponent = ({ reviews }) => {
+const ReviewComponent = ({ reviews, isLoading }) => {
   const [selected, setSelected] = useState(``);
   const [isClicked, setIsClicked] = useState(false);
+
+  if(isLoading) {
+    return <SkeletonReviewComponent />
+  }
+
   return (
     <div>
-      <div className={`${isClicked? "h-fit":"h-[70vh]"} overflow-y-hidden py-5 px-10 flex flex-col gap-4`}>
+      <div
+        className={`${isClicked ? "h-fit" : "h-[70vh]"} overflow-y-hidden py-5 px-10 flex flex-col gap-4`}
+      >
         <div className="">
           <h1 className="text-2xl">Reviews</h1>
         </div>
@@ -24,8 +32,9 @@ const ReviewComponent = ({ reviews }) => {
         </div>
       </div>
       <div
-    onClick={() => setIsClicked(!isClicked)}
-      className="h-10 flex items-center justify-center mx-10 my-2 cursor-pointer hover:bg-stone-900">
+        onClick={() => setIsClicked(!isClicked)}
+        className="h-10 flex items-center justify-center mx-10 my-2 cursor-pointer hover:bg-stone-900"
+      >
         {isClicked ? "Show Less" : "Show more"}
       </div>
     </div>

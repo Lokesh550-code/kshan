@@ -1,6 +1,12 @@
+import SkeletonCastComponent from "../SkeletonLoadingState/SkeletonCastComponent"
 import CastCard from "./CastCard";
 
-const CastComponet = ({ cast, crew }) => {
+const CastComponet = ({ cast, crew, isLoading}) => {
+
+  if(isLoading) {
+    return <SkeletonCastComponent />
+  }
+
   const castArray = cast.slice(0, 9);
   const director = crew.find((person) => person.job === "Director");
   const newArr = [director, ...castArray];
@@ -11,7 +17,9 @@ const CastComponet = ({ cast, crew }) => {
         <h1 className="text-2xl">Cast & Crew</h1>
       </div>
       <div className="h-85 w-full flex gap-6 overflow-x-auto cast-list">
-        {newArr.map((item) => <CastCard key={item.id} item={item} /> )}
+        {newArr.map((item) => (
+          <CastCard key={item.id} item={item} />
+        ))}
       </div>
     </div>
   );

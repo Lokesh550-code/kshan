@@ -1,21 +1,11 @@
-const HeroPage = ({ result }) => {
-  const minutesFunction = (num) => {
-    let hours;
-    if (num > 60) {
-      hours = Math.floor(num / 60);
-    }
-    let min = num - hours * 60;
-    return `${hours}h ${min}m`;
-  };
+import { releaseDate } from "../../utils/releaseDate";
+import { minutesFunction } from "../../utils/MinutesToHours";
+import SkeletonHeroPage from "../SkeletonLoadingState/SkeletonHeroPage"
+const HeroPage = ({ result, isLoading }) => {
 
-  const releaseDate = (release_date) => {
-    const date = new Date(release_date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-    return date;
-  };
+  if(isLoading) {
+    return <SkeletonHeroPage />
+  }
 
   return (
     <div

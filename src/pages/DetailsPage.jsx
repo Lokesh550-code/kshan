@@ -3,6 +3,7 @@ import HeroPage from "../components/DetailsPage/HeroPage";
 import CastComponet from "../components/DetailsPage/CastComponet";
 import GenreComponet from "../components/DetailsPage/GenreComponet";
 import { mediaDetail } from "../services/media";
+import ReviewComponent from "../components/DetailsPage/ReviewComponent";
 
         // "https://api.themoviedb.org/3/movie/27205?append_to_response=credits",
 
@@ -27,6 +28,7 @@ const DetailsPage = () => {
       {result?.credits?.cast && (
         <CastComponet cast={result.credits.cast} crew={result.credits.crew} />
       )}
+      {result?.reviews && <ReviewComponent reviews={result.reviews.results} />}
     </div>
   );
 };
